@@ -11,3 +11,21 @@
 body {
   @apply bg-black text-white;
 }
+
+#container {
+  @apply border-2 h-[600px] mt-28 flex items-center  justify-center;
+}
+
+#carousel {
+  @apply border-2 border-red-500 h-full flex justify-stretch overflow-x-scroll;
+  scroll-behavior: unset !important;
+  // transform: translateX(calc(-50%));
+}
+
+// .img:nth-of-type(2) {
+//   margin-left: -350px;
+// }
+
+// .img:nth-of-type(3) {
+//   margin-left: -300px;
+// }
