@@ -33,7 +33,7 @@ function App() {
                 key={Math.random() + 1}
                 src={img}
                 alt=""
-                className={`img ${idx === 4 ? 'grayscale' : undefined}`}
+                className={`img ${idx === 4 ? 'blur' : undefined}`}
                 ref={idx === 4 ? imgRef : null}
               />
             )
