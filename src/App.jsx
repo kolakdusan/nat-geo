@@ -5,7 +5,8 @@ import img2 from './assets/lostCities.jpg'
 import img3 from './assets/incredibleDrPol.jpg'
 
 import imgData from './data'
-const TRANSITION_TIME = 600
+// const TRANSITION_TIME = 600
+const TRANSITION_TIME = 2000
 const VISIBLE_IMG_COUNT = 7
 const IMG_COUNT = imgData.length
 
@@ -45,14 +46,12 @@ function App() {
   }
 
   useEffect(() => {
-    // This will be executed after activeImgIdx is updated
-    // Update activeImgsIdxs based on the new value of activeImgIdx
     setActiveImgsIdxs((prevActiveImgsIdxs) =>
       prevActiveImgsIdxs.map(
         (_, idx) => activeImgIdx + idx - Math.floor(VISIBLE_IMG_COUNT / 2)
       )
     )
-  }, [activeImgIdx]) // Run this effect whenever activeImgIdx changes
+  }, [activeImgIdx])
 
   const img = img1
 
@@ -147,6 +146,27 @@ function App() {
       >
         right
       </button>
+
+      <div className="parent2">
+        <div className={`parent ${scrollingClasses}`}>
+          {activeImgsIdxs.map((imgIdx) => {
+            return (
+              <img
+                key={imgData[imgIdx]}
+                src={imgData[imgIdx]}
+                className="dupe"
+              />
+            )
+          })}
+          <img className="base" src={img} />
+        </div>
+        <div className="absolute h-full border-2 border-green-500 top-0 left-0 w-full">
+          <div className={`ghost-parent ${scrollingClasses}`}>
+            <img src={imgData[activeImgIdx - 1]} className={`ghost-dupe`} />
+            <img src={imgData[activeImgIdx + 1]} className={`ghost-dupe`} />
+          </div>
+        </div>
+      </div>
     </>
   )
 }
