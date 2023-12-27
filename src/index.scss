@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+$base-transition: 0.5s;
+
 * {
   margin: 0;
   padding: 0;
@@ -13,39 +15,30 @@ body {
 }
 
 #container {
-  @apply border-2 h-[600px] mt-28 flex items-center justify-center;
+  @apply border-2 h-[600px] mt-28 flex items-center justify-center relative;
 }
 
 #carousel {
-  @apply border-2 border-red-500 h-full flex justify-center items-center overflow-x-scroll;
+  @apply border-2 border-red-500 h-full flex
+    justify-center items-center overflow-x-scroll;
   position: relative;
   overflow: visible;
   width: auto;
-
-  // & .ghost-carousel {
-  //   z-index: 1000;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   & img {
-  //     all: unset;
-  //     position: absolute !important;
-  //     height: 500px !important;
-  //     z-index: 10000;
-  //   }
-  // }
 }
 
 #carousel img {
   position: absolute;
   height: 575px;
-  transition: all 1s ease;
+  transition: all 0s ease;
 
   &.base {
     position: relative;
     opacity: 0;
+  }
+
+  &.scrollLeft,
+  &.scrollRight {
+    transition: all $base-transition ease;
   }
 
   &.middle {
@@ -93,10 +86,10 @@ body {
 
   &.left3 {
     opacity: 0;
-    left: -80%;
+    transform: translateX(-135%);
     height: 350px;
     &.scrollLeft {
-      left: -60%;
+      transform: translateX(-90%);
       height: 425px;
       opacity: 1;
     }
@@ -146,18 +139,57 @@ body {
   }
 }
 
-#ghostLeft {
-  height: 500px !important;
-  transform: translateX(-37%) !important;
-  opacity: 0 !important;
-  transition: all 1s ease !important;
-  &.scrollLeft {
-    opacity: 1 !important;
-    height: 575px !important;
-    transform: translateX(0%) !important;
+#ghost-carousel {
+  @apply border-2 border-red-500 h-full flex justify-center
+    items-center overflow-x-scroll;
+  position: relative;
+  overflow: visible;
+  width: auto;
+}
+
+#ghost-carousel img {
+  position: absolute;
+  height: 575px;
+  transition: all 0s ease;
+  opacity: 0;
+
+  &.scrollLeft,
+  &.scrollRight {
+    transition: all $base-transition ease, opacity $base-transition ease;
+  }
+
+  &.left1 {
+    transform: translateX(-45%);
+    z-index: 110;
+    height: 500px;
+
+    &.scrollLeft {
+      height: 575px;
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    &.scrollRight {
+      height: 425px;
+      transform: translateX(-90%);
+    }
+  }
+
+  &.right1 {
+    transform: translateX(45%);
+    z-index: 110;
+    height: 500px;
+    &.scrollLeft {
+      height: 425px;
+      transform: translateX(90%);
+    }
+    &.scrollRight {
+      transform: translateX(0);
+      height: 575px;
+      opacity: 1;
+    }
   }
 }
 
-#ghostRight {
-  transform: translateX(45%) !important;
+* {
+  border: none !important;
 }
