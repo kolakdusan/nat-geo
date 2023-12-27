@@ -51,8 +51,6 @@ function App() {
     )
   }, [activeImgIdx])
 
-  const img = img1
-
   const scrollingClasses = isScrollingRight
     ? 'scrollRight '
     : isScrollingLeft
@@ -61,40 +59,46 @@ function App() {
 
   return (
     <>
-      <div className="parent2">
-        <div className={`parent ${scrollingClasses}`}>
+      <div className="container2">
+        <div className={`container ${scrollingClasses}`}>
           {activeImgsIdxs.map((imgIdx) => {
             return (
               <img
                 key={imgData[imgIdx]}
                 src={imgData[imgIdx]}
-                className="dupe"
+                className="cover"
               />
             )
           })}
-          {/* <img className="base" src={img} /> */}
+          <img src={imgData[activeImgIdx - 1]} className={`ghost-cover left`} />
+          <img
+            src={imgData[activeImgIdx + 1]}
+            className={`ghost-cover right`}
+          />
         </div>
         <div className="absolute h-full border-2 border-green-500 top-0 left-0 w-full">
-          <div className={`ghost-parent ${scrollingClasses}`}>
-            <img src={imgData[activeImgIdx - 1]} className={`ghost-dupe`} />
-            <img src={imgData[activeImgIdx + 1]} className={`ghost-dupe`} />
+          <div className={`ghost-container ${scrollingClasses}`}>
+            <img src={imgData[activeImgIdx - 1]} className={`ghost-cover`} />
+            <img src={imgData[activeImgIdx + 1]} className={`ghost-cover`} />
           </div>
         </div>
       </div>
-      <button
-        className="bg-white text-black px-10 py-3"
-        onClick={handleScrollLeft}
-        disabled={isScrollingLeft || isScrollingRight}
-      >
-        left
-      </button>
-      <button
-        className="bg-white text-black px-10 py-3"
-        onClick={handleScrollRight}
-        disabled={isScrollingLeft || isScrollingRight}
-      >
-        right
-      </button>
+      <div className="w-full flex justify-end -mt-20">
+        <button
+          className="bg-white text-black px-10 py-3 z-[1000] "
+          onClick={handleScrollLeft}
+          disabled={isScrollingLeft || isScrollingRight}
+        >
+          left
+        </button>
+        <button
+          className="bg-white text-black px-10 py-3 z-[1000] "
+          onClick={handleScrollRight}
+          disabled={isScrollingLeft || isScrollingRight}
+        >
+          right
+        </button>
+      </div>
     </>
   )
 }

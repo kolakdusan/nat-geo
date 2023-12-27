@@ -20,41 +20,71 @@ body {
 
 // #endregion
 
-// .parent2 {
+// .container2 {
 //   @apply relative h-screen flex items-center justify-center;
 //   @apply border-2 border-blue-500;
 // }
 
 $base-transition: 0.5s;
 $VISIBLE_IMG_COUNT: 7;
-$surroundingElementsOffsetIdx: floor(math.div($VISIBLE_IMG_COUNT, 2));
+$halfVisibleImgCount: floor(math.div($VISIBLE_IMG_COUNT, 2));
+$middleIdx: 4;
 
-.parent {
+.container {
   @apply w-full h-screen flex justify-center items-center;
   @apply border-2 border-red-500;
   position: relative;
 
-  .base {
-    height: 575px;
-    opacity: 0.3;
-    position: relative;
+  &.scrollLeft,
+  &.scrollRight {
+    .ghost-cover {
+      transition: all $base-transition ease, opacity $base-transition ease !important;
+      height: 575px;
+    }
+  }
+
+  &.scrollLeft {
+    .ghost-cover.left {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+
+  &.scrollRight {
+    .ghost-cover.right {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+
+  .cover {
+    position: absolute;
+    transition: all 0s ease;
+  }
+
+  .ghost-cover {
+    position: absolute;
+    height: 500px;
+    transition: all 0s ease;
+    opacity: 0;
+    z-index: 1000;
+    &.left {
+      transform: translateX(-45%);
+    }
+
+    &.right {
+      transform: translateX(45%);
+    }
   }
 }
 
-.dupe {
-  position: absolute;
-  transition: all 0s ease;
-}
-
-$halfVisibleImgCount: floor(math.div($VISIBLE_IMG_COUNT, 2));
-$middleIdx: 4;
 @for $i from 1 through $VISIBLE_IMG_COUNT {
   $relativeIdx: $i - $halfVisibleImgCount - 1;
   $initialHeight: 575px;
   $heightStep: 75px;
   $translateStep: 45%;
 
-  .dupe:nth-of-type(#{$i}) {
+  .cover:nth-of-type(#{$i}) {
     z-index: (103 - math.abs($relativeIdx));
     height: $initialHeight - math.abs($relativeIdx * $heightStep);
     transform: translateX(0 + $relativeIdx * $translateStep);
@@ -62,12 +92,12 @@ $middleIdx: 4;
 
   @if $i == 1 or $i == $VISIBLE_IMG_COUNT {
     // @debug $relativeIdx;
-    .dupe:nth-of-type(#{$i}) {
+    .cover:nth-of-type(#{$i}) {
       opacity: 0;
     }
   }
-  .parent {
-    &.scrollLeft .dupe:nth-of-type(#{$i}) {
+  .container {
+    &.scrollLeft .cover:nth-of-type(#{$i}) {
       transition: all $base-transition ease;
       transform: translateX(0 + $relativeIdx * $translateStep + $translateStep);
       height: $initialHeight - math.abs(($relativeIdx + 1) * $heightStep);
@@ -81,7 +111,7 @@ $middleIdx: 4;
       }
     }
 
-    &.scrollRight .dupe:nth-of-type(#{$i}) {
+    &.scrollRight .cover:nth-of-type(#{$i}) {
       transition: all $base-transition ease;
       transform: translateX(0 + $relativeIdx * $translateStep - $translateStep);
       height: $initialHeight - math.abs(($relativeIdx - 1) * $heightStep);
@@ -97,9 +127,12 @@ $middleIdx: 4;
   }
 }
 
-.ghost-parent {
+.ghost-container {
+  * {
+    display: none;
+  }
   @apply border-2 border-red-500 h-full flex justify-center
-  items-center overflow-x-scroll;
+    items-center overflow-x-scroll;
   position: relative;
   overflow: visible;
   width: auto;
@@ -118,7 +151,7 @@ $middleIdx: 4;
     }
   }
   &.scrollLeft {
-    .ghost-dupe:nth-of-type(1) {
+    .ghost-cover:nth-of-type(1) {
       height: 575px;
       transform: translateX(0%);
       opacity: 1;
@@ -126,17 +159,17 @@ $middleIdx: 4;
   }
 
   &.scrollRight {
-    .ghost-dupe:nth-of-type(2) {
+    .ghost-cover:nth-of-type(2) {
       height: 575px;
       transform: translateX(0%);
       opacity: 1;
     }
   }
 
-  .ghost-dupe:nth-of-type(1) {
+  .ghost-cover:nth-of-type(1) {
     transform: translateX(-45%);
   }
-  .ghost-dupe:nth-of-type(2) {
+  .ghost-cover:nth-of-type(2) {
     transform: translateX(45%);
   }
 }
