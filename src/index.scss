@@ -33,9 +33,11 @@ $brightnessStep: 30;
   .cover {
     position: absolute;
     transition: all 0s ease;
+    aspect-ratio: 3 / 4;
   }
 
   .ghost-cover {
+    pointer-events: none;
     position: absolute;
     height: 500px;
     transition: all 0s ease;
@@ -79,6 +81,11 @@ $brightnessStep: 30;
   }
 }
 
+img {
+  max-width: 100%;
+  // display: none;
+}
+
 @for $i from 1 through $VISIBLE_IMG_COUNT {
   $relativeIdx: $i - $halfVisibleImgCount - 1;
   $initialHeight: 575px;
@@ -87,21 +94,29 @@ $brightnessStep: 30;
   .cover:nth-of-type(#{$i}) {
     z-index: (103 - math.abs($relativeIdx));
     height: $initialHeight - math.abs($relativeIdx * $heightStep);
+    $height: $initialHeight - math.abs($relativeIdx * $heightStep);
     transform: translateX(0 + $relativeIdx * $translateStep);
     filter: brightness(100% - math.abs($relativeIdx * $brightnessStep));
   }
 
   @if $i == 1 or $i == $VISIBLE_IMG_COUNT {
-    // @debug $relativeIdx;
     .cover:nth-of-type(#{$i}) {
       opacity: 0;
     }
   }
+
+  @if $i != $halfVisibleImgCount + 1 {
+    .container .cover:nth-child(#{$i}) button {
+      pointer-events: none;
+    }
+  }
+
   .container {
     &.scrollLeft .cover:nth-of-type(#{$i}) {
       transition: all $base-transition ease;
       transform: translateX(0 + $relativeIdx * $translateStep + $translateStep);
       height: $initialHeight - math.abs(($relativeIdx + 1) * $heightStep);
+      $height: $initialHeight - math.abs($relativeIdx * $heightStep);
       filter: brightness(100% - math.abs(($relativeIdx + 1) * $brightnessStep));
 
       @if $i == 1 {
@@ -116,7 +131,9 @@ $brightnessStep: 30;
     &.scrollRight .cover:nth-of-type(#{$i}) {
       transition: all $base-transition ease;
       transform: translateX(0 + $relativeIdx * $translateStep - $translateStep);
-      height: $initialHeight - math.abs(($relativeIdx - 1) * $heightStep);
+      height: $initialHeight -
+        math.abs(($relativeIdx - 1) * $heightStep) !important;
+      $height: $initialHeight - math.abs($relativeIdx * $heightStep);
       filter: brightness(100% - math.abs(($relativeIdx - 1) * $brightnessStep));
 
       @if $i == $VISIBLE_IMG_COUNT {
@@ -130,6 +147,6 @@ $brightnessStep: 30;
   }
 }
 
-button {
+.chevron {
   @apply text-5xl text-white px-10 py-3 z-[1000] absolute;
 }

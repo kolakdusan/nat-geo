@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Geograph;
+  src: url(../../assets/fonts/geographwebmedium.ttf) format('truetype');
+}
+
+.watch-now-btn-container {
+  @apply absolute left-0 right-0 mx-auto bottom-16 flex justify-center;
+  // TODO: Configure fonts via tailwind - ButtonWhiteBar.scss
+  font-family: Geograph;
+  .watch-now-btn-wrapper {
+    @apply overflow-hidden relative bg-[#ffd700];
+
+    .watch-now-btn {
+      @apply relative z-10 px-5 py-3 tracking-widest text-sm text-black cursor-pointer;
+
+      &:hover + .watch-now-btn-white-bar {
+        @apply left-0;
+      }
+    }
+    .watch-now-btn-white-bar {
+      @apply absolute w-full h-full top-0 -left-[100%] bg-white  transition-all duration-300 ease-in-out;
+    }
+  }
+}
