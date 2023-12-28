@@ -6,7 +6,7 @@ import imgData from './data'
 import Image from './components/Image'
 // const TRANSITION_TIME = 600
 const TRANSITION_TIME = 600
-const VISIBLE_IMG_COUNT = 7
+const VISIBLE_IMG_COUNT = 5
 const IMG_COUNT = imgData.length
 
 function App() {
