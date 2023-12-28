@@ -63,7 +63,7 @@ function App() {
   return (
     <>
       <div className="container2">
-        <div className={`container ${scrollingClasses}`}>
+        <div className={`container ${scrollingClasses} mx-auto`}>
           {activeImgsIdxs.map((imgIdx) => {
             return (
               <img
@@ -82,14 +82,14 @@ function App() {
             className={`ghost-cover right`}
           />
           <button
-            className="left-52 chevron"
+            className="left-12 chevron"
             onClick={handleScrollLeft}
             disabled={isScrollingLeft || isScrollingRight}
           >
             <FaChevronLeft />
           </button>
           <button
-            className="right-52 chevron"
+            className="right-12 chevron"
             onClick={handleScrollRight}
             disabled={isScrollingLeft || isScrollingRight}
           >
