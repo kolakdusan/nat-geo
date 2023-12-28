@@ -4,25 +4,25 @@
 
 @font-face {
   font-family: Geograph;
-  src: url(../../assets/fonts/geographwebmedium.ttf) format('truetype');
+  src: url(../../assets/fonts/geographeditwebbold.ttf) format('truetype');
 }
 
 .watch-now-btn-container {
-  @apply absolute left-0 right-0 mx-auto bottom-16 flex justify-center;
+  @apply absolute left-0 right-0 mx-auto bottom-0 flex items-end justify-center pb-[10%] h-full;
   // TODO: Configure fonts via tailwind - ButtonWhiteBar.scss
   font-family: Geograph;
   .watch-now-btn-wrapper {
-    @apply overflow-hidden relative bg-[#ffd700];
+    @apply overflow-hidden relative bg-[#ffd700]  h-[10%] flex items-center w-[40%] justify-center cursor-pointer;
 
     .watch-now-btn {
-      @apply relative z-10 px-5 py-3 tracking-widest text-sm text-black cursor-pointer;
-
-      &:hover + .watch-now-btn-white-bar {
-        @apply left-0;
-      }
+      @apply relative z-10 tracking-[3.5px] text-sm text-black;
     }
     .watch-now-btn-white-bar {
       @apply absolute w-full h-full top-0 -left-[100%] bg-white  transition-all duration-300 ease-in-out;
+    }
+
+    &:hover .watch-now-btn-white-bar {
+      @apply left-0;
     }
   }
 }

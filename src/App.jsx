@@ -6,7 +6,7 @@ import imgData from './data'
 import Image from './components/Image'
 // const TRANSITION_TIME = 600
 const TRANSITION_TIME = 600
-const VISIBLE_IMG_COUNT = 5
+const VISIBLE_IMG_COUNT = 7
 const IMG_COUNT = imgData.length
 
 function App() {
@@ -60,12 +60,11 @@ function App() {
     ? 'scrollLeft'
     : undefined
 
-  // TODO: implement watch now button for the ghost
   return (
     <>
       <div className="container2">
         <div className={`container ${scrollingClasses} mx-auto `}>
-          {activeImgsIdxs.map((imgIdx) => {
+          {activeImgsIdxs.map((imgIdx, idx) => {
             return (
               <Image
                 key={imgData[imgIdx]}
@@ -74,11 +73,11 @@ function App() {
               />
             )
           })}
-          <img
+          <Image
             src={imgData[(activeImgIdx - 1 + IMG_COUNT) % IMG_COUNT]}
             className={`ghost-cover left`}
           />
-          <img
+          <Image
             src={imgData[(activeImgIdx + 1) % IMG_COUNT]}
             className={`ghost-cover right`}
           />

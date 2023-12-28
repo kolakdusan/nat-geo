@@ -25,13 +25,18 @@ $VISIBLE_IMG_COUNT: 7;
 $halfVisibleImgCount: floor(math.div($VISIBLE_IMG_COUNT, 2));
 $brightnessStep: 30;
 
-.container {
-  @apply w-full h-screen flex justify-center items-center;
-  // @apply border-2 border-red-500;
-  position: relative;
+// .container2 {
+//   @apply border-2;
+// }
 
+.container {
+  @apply w-full relative h-screen flex justify-center items-center;
+  // @apply border-2 border-red-500;
+  // filter: blur(3px);
+  width: calc((575px * 3 / 4) + (500px * 3 / 4));
   .cover {
     position: absolute;
+
     transition: all 0s ease;
     aspect-ratio: 3 / 4;
   }
@@ -40,6 +45,7 @@ $brightnessStep: 30;
     pointer-events: none;
     position: absolute;
     height: 500px;
+    aspect-ratio: 3/4;
     transition: all 0s ease;
     opacity: 0;
     z-index: 1000;
@@ -106,7 +112,7 @@ img {
   }
 
   @if $i != $halfVisibleImgCount + 1 {
-    .container .cover:nth-child(#{$i}) button {
+    .container .cover:nth-child(#{$i}) .watch-now-btn-wrapper {
       pointer-events: none;
     }
   }
