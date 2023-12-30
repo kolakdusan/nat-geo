@@ -20,7 +20,9 @@ body {
 
 // #endregion
 
-$base-transition: 0.5s;
+$base-transition: 5s;
+$opacity-transition: 5s;
+$filter-transition: 5s;
 $VISIBLE_IMG_COUNT: 7;
 $halfVisibleImgCount: floor(math.div($VISIBLE_IMG_COUNT, 2));
 $brightnessStep: 30;
@@ -32,11 +34,10 @@ $brightnessStep: 30;
 .container {
   @apply w-full relative h-screen flex justify-center items-center;
   // @apply border-2 border-red-500;
-  // filter: blur(3px);
   width: calc((575px * 3 / 4) + (500px * 3 / 4));
   .cover {
     position: absolute;
-
+    filter: brightness(100%);
     transition: all 0s ease;
     aspect-ratio: 3 / 4;
   }
@@ -62,8 +63,8 @@ $brightnessStep: 30;
   &.scrollLeft,
   &.scrollRight {
     .ghost-cover {
-      transition: all $base-transition ease,
-        opacity $base-transition - 0.3s ease, filter 0.1s ease !important;
+      transition: all $base-transition ease, opacity $opacity-transition ease,
+        filter $filter-transition ease !important;
       height: 575px;
     }
   }
@@ -76,7 +77,6 @@ $brightnessStep: 30;
       opacity: 1;
     }
   }
-
   &.scrollRight {
     .ghost-cover.right {
       transform: translateX(0%);
@@ -86,7 +86,6 @@ $brightnessStep: 30;
     }
   }
 }
-
 img {
   max-width: 100%;
   // display: none;

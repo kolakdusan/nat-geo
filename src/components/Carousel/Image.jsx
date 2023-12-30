@@ -1,4 +1,4 @@
-import ButtonWhiteBar from './ButtonWhiteBar/ButtonWhiteBar'
+import ButtonWhiteBar from '../ButtonWhiteBar/ButtonWhiteBar.jsx'
 
 const Image = ({ src, ...props }) => {
   return (

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Geograph;
+  src: url(../../assets/fonts/geographeditwebbold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: GeographLight;
+  src: url(../../assets/fonts/geographeditwebregular.ttf) format('truetype');
+}
+
+body {
+  font-family: Geograph, Arial, Helvetica, sans-serif;
+}
+
+.yellow-bar {
+  transition: all 0.15s ease;
+}
+
+.newsletters {
+  font-family: GeographLight, Arial, Helvetica, sans-serif;
+
+  &:hover + .yellow-bar {
+    @apply h-full;
+  }
+}
+
+.yellow-full-bar {
+  pointer-events: none !important;
+  transition: all 0.3s ease;
+  @apply left-[-100%];
+}
+
+.sign-up-wrapper {
+  @apply border-b-gray-500 border-b-2;
+}
+
+.sign-up-wrapper:hover .yellow-full-bar {
+  @apply left-0;
+}
