@@ -11,7 +11,6 @@ const VISIBLE_IMG_COUNT = 7
 const IMG_COUNT = imgData.length
 
 const Carousel = () => {
-  console.log(123)
   const [canStartScrolling, setCanStartScrolling] = useState(0)
   const [scrollingDirection, setScrollDirection] = useState(0)
   const [timeoutId, setTimeoutId] = useState(null)
@@ -24,6 +23,19 @@ const Carousel = () => {
     )
   )
 
+  const handleScroll = (direction) => {
+    if (scrollingDirection !== 0) {
+      updateCarouselImages()
+      setScrollDirection(0)
+    }
+
+    setCanStartScrolling(direction)
+    clearTimeout(timeoutId)
+    setActiveImgIdx(
+      (prevState) => (prevState + direction + IMG_COUNT) % IMG_COUNT
+    )
+  }
+
   const updateCarouselImages = () => {
     setActiveImgsIdxs((prevActiveImgsIdxs) =>
       prevActiveImgsIdxs.map(
@@ -34,26 +46,6 @@ const Carousel = () => {
     )
   }
 
-  const handleScroll = (direction) => {
-    console.log(direction)
-    if (scrollingDirection !== 0) {
-      console.log('updating')
-      updateCarouselImages()
-      setScrollDirection(0)
-    }
-
-    setCanStartScrolling(direction)
-    clearTimeout(timeoutId)
-
-    setActiveImgIdx(
-      (prevState) => (prevState + direction + IMG_COUNT) % IMG_COUNT
-    )
-  }
-
-  useEffect(() => {}, [activeImgsIdxs])
-
-  useEffect(() => {}, [scrollingDirection])
-
   useEffect(() => {
     clearTimeout(timeoutId)
     if (canStartScrolling === 1) {
@@ -61,14 +53,23 @@ const Carousel = () => {
     } else if (canStartScrolling === -1) {
       setScrollDirection(-1)
     }
+
     setTimeoutId(
       setTimeout(() => {
         updateCarouselImages()
         setScrollDirection(0)
       }, TRANSITION_TIME)
     )
+
     return () => clearTimeout(timeoutId)
   }, [activeImgIdx, canStartScrolling])
+
+  const scrollingClasses =
+    scrollingDirection === -1
+      ? 'scrollLeft '
+      : scrollingDirection === 1
+      ? 'scrollRight '
+      : undefined
 
   const leftClickLongPress = useLongPress(
     () => {
@@ -89,20 +90,17 @@ const Carousel = () => {
     onTouchEnd: onTouchEndLongPress,
   } = leftClickLongPress
 
-  const scrollingClasses =
-    scrollingDirection === -1
-      ? 'scrollLeft '
-      : scrollingDirection === 1
-      ? 'scrollRight '
-      : undefined
-
   return (
     <>
       <div className="carousel-wrapper">
-        <div className={`container ${scrollingClasses}  mx-auto `}>
+        <div className={`carousel-container ${scrollingClasses} `}>
           {activeImgsIdxs.map((imgIdx) => {
             return (
-              <Image key={imgIdx} src={imgData[imgIdx]} className="cover" />
+              <Image
+                key={imgIdx}
+                src={imgData[imgIdx]}
+                className="carousel-item"
+              />
             )
           })}
           <button
@@ -120,7 +118,7 @@ const Carousel = () => {
             <FaChevronRight />
           </button>
         </div>
-        <div className=" absolute z-[1000000] w-full h-full top-0 left-0 pointer-events-none">
+        <div className=" absolute z-[5001] w-full h-full top-0 left-0 pointer-events-none">
           <div className={`containerGGG ${scrollingClasses}  mx-auto `}>
             {activeImgsIdxs.map((imgIdx) => {
               return (
@@ -134,7 +132,6 @@ const Carousel = () => {
           </div>
         </div>
       </div>
-      {<button onClick={() => scrollABit(3)}>asdf</button>}
     </>
   )
 }

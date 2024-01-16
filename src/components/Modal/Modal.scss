@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.modal-class {
+  @apply z-[5000];
+  a {
+    @apply transition-all duration-500 ease-in-out cursor-pointer;
+    &:hover {
+      color: #ffd700;
+      @apply transition-all duration-500 ease-in-out;
+    }
+  }
+  position: fixed !important;
+}
