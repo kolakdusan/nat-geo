@@ -53,7 +53,8 @@ export const SitesLabel = () => {
 }
 
 const ModalCloseBtnWrapper = styled.div.attrs({
-  className: 'absolute top-0 right-0 mr-7 mt-2  ',
+  className: 'absolute top-0 right-0 mr-3 mt-2  ',
+  // mr-7 je bilo
 })``
 
 const ModalCloseBtnInnerWrapper = styled.button.attrs({

@@ -3,6 +3,7 @@ import useLongPress from './../hooks/useLongPress'
 
 import Image from './Image.jsx'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 
 import imgData from '../../data'
 
@@ -109,13 +110,13 @@ const Carousel = () => {
             // onMouseDown={handleMouseDownLeft}
             // {...leftClickLongPress}
           >
-            <FaChevronLeft />
+            <GoChevronLeft />
           </button>
           <button
             className="-right-36 chevron mt-12"
             onClick={() => handleScroll(1)}
           >
-            <FaChevronRight />
+            <GoChevronRight />
           </button>
         </div>
         <div className=" absolute w-full h-full top-0 left-0 pointer-events-none">

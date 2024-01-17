@@ -8,6 +8,12 @@
 // #endregion
 // #region Base
 
+:root {
+  --swiper-theme-color: white !important;
+  --swiper-preloader-color: white !important;
+  --swiper-wrapper-transition-timing-function: initial;
+}
+
 @font-face {
   font-family: GeographLight;
   src: url(./assets/fonts/geographeditwebregular.ttf) format('truetype');
@@ -28,18 +34,6 @@
   box-sizing: border-box;
 }
 
-#root {
-  padding-left: calc(100vw - 100%);
-}
-
-html {
-  scrollbar-gutter: auto !important;
-  overflow-x: hidden !important;
-  width: 100vw;
-  // margin-right: calc(100vw - 100%);
-  padding-left: calc(100vw - 100%);
-}
-
 .active {
   transition: all 0.5s ease, padding 0s ease;
 }
@@ -47,9 +41,15 @@ html {
 body {
   @apply bg-black text-white;
   font-family: Geograph, Arial, Helvetica, sans-serif;
-  position: relative;
-  padding-left: 17px;
-  width: calc(100vw - 17px);
+}
+
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 // #endregion
@@ -141,7 +141,7 @@ $translateStep: 45%;
 }
 
 .chevron {
-  @apply text-5xl text-white px-10 py-3 z-[1000] absolute;
+  @apply text-6xl text-white px-10 py-3 z-[1000] absolute;
 }
 
 // ALLLLLLLAAAAAAAAA
@@ -297,9 +297,78 @@ $mainColor: #ffd700;
 //   overflow: hidden !important ;
 // }
 
+// Scrolbar padding stuff
+
+// inserted to fix
 html,
 body {
-  position: relative;
-  height: 100vh;
-  width: 100wv;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  @apply tracking-[0.5px];
+}
+
+html {
+  height: initial !important;
+}
+
+// html,
+// body {
+//   position: relative;
+//   height: 100vh;
+//   width: 100wv;
+// }
+
+// html {
+//   scrollbar-gutter: auto !important;
+//   overflow-x: hidden !important;
+//   width: 100vw;
+//   // margin-right: calc(100vw - 100%);
+//   padding-left: calc(100vw - 100%);
+// }
+
+// body {
+//   position: relative;
+//   padding-left: 17px;
+//   width: calc(100vw - 17px);
+// }
+
+// #root {
+//   padding-left: calc(100vw - 100%);
+// }
+.sample-slider {
+  width: 70%;
+  position: static !important;
+  display: grid !important;
+}
+.sample-slider [class^='swiper-button-'] {
+  inset: initial;
+  margin: 0;
+  align-self: center;
+}
+.sample-slider .swiper-button-prev {
+  justify-self: start;
+  margin-left: -40px;
+  width: 10px !important;
+  height: 10px !important;
+}
+.sample-slider .swiper-button-next {
+  justify-self: end;
+  margin-right: -45px;
+}
+.sample-slider .swiper-pagination {
+  inset: initial !important;
+  align-self: end;
+  justify-self: center;
+  margin-bottom: -40px;
+}
+.sample-slider img {
+  width: 100%;
+}
+
+.sample-slider [class^='swiper-button-']::after {
+  font-size: 20px;
+}
+
+.swiper-button-disabled {
+  visibility: hidden;
 }
