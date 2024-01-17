@@ -6,7 +6,7 @@ import Header from './components/Header/Header'
 import Home from './pages/Home/Home.jsx'
 
 function App() {
-  const { showModal, setShowModal } = useNatGeo()
+  const { showModal } = useNatGeo()
 
   return (
     <AnimatePresence>
