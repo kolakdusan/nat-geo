@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const BasicMotionDivWrapper = ({ keyName, children }) => {
+const BasicMotionDivWrapper = ({ children }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -1,0 +1,20 @@
+export const leftSideItems = [
+  'ANIMALS',
+  'ENVIRONMENT',
+  'HISTORY & CULTURE',
+  'SCIENCE',
+  'TRAVEL',
+]
+
+export const rightSideItems = [
+  'WATCH TV',
+  'READ THE MAGAZINE',
+  'VISIT NAT GEO FAMILY',
+  'BOOK A TRIP',
+  'INSPIRE YOUR KIDS',
+  'LISTEN TO PODCASTS',
+  'SHOP NAT GEO',
+  'ATTEND A LIVE EVENT',
+  'LEARN ABOUT OUR IMPACT',
+  'SUPPORT OUR MISSION',
+]

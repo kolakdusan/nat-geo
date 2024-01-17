@@ -65,7 +65,7 @@ $halfVisibleImgCount: floor(math.div($VISIBLE_IMG_COUNT, 2));
 $brightnessStep: 30;
 
 .carousel-wrapper {
-  @apply relative;
+  @apply relative mt-16;
 }
 
 .carousel-container {
@@ -267,10 +267,6 @@ img {
 }
 
 $mainColor: #ffd700;
-
-.p {
-  // font-family: GeographLight, Arial, Helvetica, sans-serif;
-}
 
 .subscribezz {
   @apply transition-all duration-300 ease-in-out cursor-pointer;

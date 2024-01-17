@@ -118,7 +118,7 @@ const Carousel = () => {
             <FaChevronRight />
           </button>
         </div>
-        <div className=" absolute z-[5001] w-full h-full top-0 left-0 pointer-events-none">
+        <div className=" absolute w-full h-full top-0 left-0 pointer-events-none">
           <div className={`containerGGG ${scrollingClasses}  mx-auto `}>
             {activeImgsIdxs.map((imgIdx) => {
               return (
