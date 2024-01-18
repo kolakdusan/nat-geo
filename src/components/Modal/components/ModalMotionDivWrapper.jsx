@@ -6,7 +6,7 @@ const ModalMotionDivWrapper = ({ children }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="modal-class absolute w-full h-full top-0 left-0 bg-black"
+      className="modal-class absolute w-full h-full top-0 left-0 bg-black z-[500000]"
     >
       {children}
     </motion.div>

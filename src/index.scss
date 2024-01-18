@@ -300,16 +300,18 @@ $mainColor: #ffd700;
 // Scrolbar padding stuff
 
 // inserted to fix
-html,
-body {
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
-  @apply tracking-[0.5px];
-}
+// html,
+// body {
+//   overflow-x: hidden;
+//   scrollbar-gutter: stable;
+//   @apply tracking-[0.5px];
+// }
 
-html {
-  height: initial !important;
-}
+// html {
+//   height: initial !important;
+// }
+
+//stopping insertion
 
 // html,
 // body {
@@ -371,4 +373,31 @@ html {
 
 .swiper-button-disabled {
   visibility: hidden;
+}
+
+.track-vertical {
+  @apply rounded-full;
+  z-index: 50000;
+  height: 93%;
+  width: 10px;
+  background: rgba(255, 255, 255, 0);
+  margin-top: 55px;
+  right: 0px;
+  transition: all 0.3s ease;
+  &:hover,
+  &:active {
+    width: 17px !important;
+    background: rgba(255, 255, 255, 0.1);
+
+    .thumb-vertical {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.thumb-vertical {
+  background: rgba(255, 255, 255, 0.3);
+
+  transition: background 0.3s ease;
+  @apply rounded-full;
 }
