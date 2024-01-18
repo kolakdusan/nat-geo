@@ -1,11 +1,10 @@
 import { useNatGeo } from './hooks/useNatGeo.jsx'
 import { AnimatePresence } from 'framer-motion'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 import Modal from './components/Modal/Modal.jsx'
 import Header from './components/Header/Header'
 import Home from './pages/Home/Home.jsx'
-
-import { Scrollbars } from 'react-custom-scrollbars'
 
 function App() {
   const { showModal } = useNatGeo()
