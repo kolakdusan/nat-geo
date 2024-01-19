@@ -1,19 +1,16 @@
-.active {
-  @apply fixed top-0 left-0 w-full h-[50px] z-[4000] flex items-center justify-between bg-white text-sm overflow-hidden shadow-md;
-  transition: all 0.5s ease-in-out;
-  &.hidden2 {
-    @apply top-[-49px];
-  }
-}
+// .active {
+//   @apply fixed top-0 left-0 w-full h-[50px] z-[4000] flex items-center justify-between bg-white text-sm overflow-hidden shadow-md;
+//   transition: all 0.5s ease-in-out;
+// }
 
-.top {
-  top: 0px;
-}
+// .top {
+//   top: 0px;
+// }
 
-.down {
-  top: -49px;
-}
+// .down {
+//   top: -49px;
+// }
 
-.up {
-  top: 0px;
-}
+// .up {
+//   top: 0px;
+// }

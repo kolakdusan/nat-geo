@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useNatGeo } from '../../hooks/useNatGeo'
 
 import styled from 'styled-components'
@@ -14,30 +13,29 @@ import MenuBtn from './components/MenuBtn/MenuBtn'
 
 import './Header.scss'
 
-const Wrapper = styled.section`
+const Wrapper = styled.section.attrs({
+  className:
+    'fixed top-0 left-0 w-full h-[50px] z-[4000] flex items-center justify-between bg-white text-sm overflow-hidden shadow-md',
+})`
+  transition: all 0.5s ease-in-out;
+
+  &.top {
+    top: 0px;
+  }
+
+  &.down {
+    top: -49px;
+  }
+
+  &.up {
+    top: 0px;
+  }
+
   /* font-family: Geograph, Arial, Helvetica, sans-serif; */
 `
 
 const Header = () => {
-  const { showModal, setShowModal } = useNatGeo()
-  const [headerPosition, setHeaderPosition] = useState('top')
-
-  useEffect(() => {
-    let lastVal = 0
-    window.onscroll = function () {
-      let y = window.scrollY
-      if (y > lastVal) {
-        setHeaderPosition('down')
-      }
-      if (y < lastVal) {
-        setHeaderPosition('up')
-      }
-      if (y === 0) {
-        setHeaderPosition('top')
-      }
-      lastVal = y
-    }
-  }, [])
+  const { setShowModal, headerPosition } = useNatGeo()
 
   return (
     <BasicMotionDivWrapper>

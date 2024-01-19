@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { useNatGeo } from '../../hooks/useNatGeo'
 
 import {
@@ -15,38 +14,11 @@ import ModalMotionDivWrapper from './components/ModalMotionDivWrapper'
 import './Modal.scss'
 
 const Modal = () => {
-  const { showModal, setShowModal } = useNatGeo()
-  const modalRef = useRef(null)
-
-  // Scrolbar padding stuff
-
-  // useEffect(() => {
-  //   let timeoutId
-  //   const header = document.getElementById('navbar')
-
-  //   if (showModal) {
-  //     document.documentElement.style.overflowY = 'hidden'
-  //     header.style.paddingRight = '17px'
-  //     document.getElementById('root').style.paddingLeft = 'calc(100vw - 100%)'
-  //     modalRef.current.style.paddingRight = '17px'
-  //   } else {
-  //     timeoutId = setTimeout(() => {
-  //       // closeModalBtnRef.current.style.marginLeft = '17px'
-  //       document.documentElement.style.overflowY = 'auto'
-  //       document.getElementById('root').style.paddingLeft = '0px'
-  //       modalRef.current.style.paddingRight = '0px'
-  //       header.style.paddingRight = '0px'
-  //     }, 150)
-  //   }
-
-  //   return () => {
-  //     clearTimeout(timeoutId)
-  //   }
-  // }, [showModal])
+  const { setShowModal } = useNatGeo()
 
   return (
     <ModalMotionDivWrapper>
-      <ModalWrapper ref={modalRef}>
+      <ModalWrapper>
         <LeftSideMenu>
           <TopicsLabel />
           <LeftSideItems />
