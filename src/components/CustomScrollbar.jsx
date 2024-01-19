@@ -29,13 +29,14 @@ const ThumbVertical = styled.div`
   border-radius: 50px;
 `
 
+let lastVal = 0
+
 const CustomScrollbar = ({ children }) => {
   const { setHeaderPosition } = useNatGeo()
 
-  let lastVal = 0
-
   const handleScroll = (e) => {
     let y = e.srcElement.scrollTop
+    console.log(y, lastVal)
     if (y > lastVal) {
       setHeaderPosition('down')
     }
