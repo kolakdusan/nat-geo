@@ -92,6 +92,7 @@ const Carousel = () => {
   } = leftClickLongPress
 
   // TODO: Ghost items overlap navbar, temporary solution: z-index:3000
+  // eh
 
   return (
     <>
