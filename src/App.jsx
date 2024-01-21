@@ -9,13 +9,13 @@ import Home from './pages/Home/Home.jsx'
 function App() {
   const { showModal } = useNatGeo()
   return (
-    <AnimatePresence>
-      <CustomScrollbar>
+    <CustomScrollbar>
+      <AnimatePresence>
         {showModal && <Modal key="modal" />}
         <Header key="header" />
         <Home key="home" />
-      </CustomScrollbar>
-    </AnimatePresence>
+      </AnimatePresence>
+    </CustomScrollbar>
   )
 }
 

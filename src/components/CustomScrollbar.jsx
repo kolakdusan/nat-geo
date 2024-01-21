@@ -36,7 +36,6 @@ const CustomScrollbar = ({ children }) => {
 
   const handleScroll = (e) => {
     let y = e.srcElement.scrollTop
-    console.log(y, lastVal)
     if (y > lastVal) {
       setHeaderPosition('down')
     }

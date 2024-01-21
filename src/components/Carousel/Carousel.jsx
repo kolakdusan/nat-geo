@@ -91,6 +91,8 @@ const Carousel = () => {
     onTouchEnd: onTouchEndLongPress,
   } = leftClickLongPress
 
+  // TODO: Ghost items overlap navbar, temporary solution: z-index:3000
+
   return (
     <>
       <div className="carousel-wrapper">

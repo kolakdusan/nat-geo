@@ -165,7 +165,8 @@ $translateStep: 45%;
 
 .containerGGG {
   @apply w-full relative h-screen flex justify-center items-center;
-  z-index: 10000000;
+  // z-index: 10000000;
+  z-index: 3000;
   // @apply border-2 border-red-500;
   width: calc((575px * 3 / 4) + (500px * 3 / 4));
   .coverGGG {

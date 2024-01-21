@@ -18,7 +18,9 @@ const LatestStories = () => {
         heroImage={heroImage}
       />
 
-      {/* <div className="mt-32 h-[50vh] border-2 w-[1000px] flex items-center justify-center text-4xl"></div> */}
+      {/* <div className="mt-32 h-[50vh] border-2 w-[1000px] flex items-center justify-center text-4xl">
+        #TODO
+      </div> */}
     </>
   )
 }
