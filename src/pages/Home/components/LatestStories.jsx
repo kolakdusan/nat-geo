@@ -13,7 +13,7 @@ const LatestStories = () => {
       />
 
       <GridTemplate
-        title={`TODAY'S PICKS`}
+        title="TODAY'S PICKS"
         isReversed={false}
         heroImage={heroImage}
       />

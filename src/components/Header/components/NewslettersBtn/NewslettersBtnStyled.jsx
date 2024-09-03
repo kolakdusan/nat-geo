@@ -1,26 +1,34 @@
 import styled from 'styled-components'
 
-const NewsletterBtnWrapper = styled.div.attrs({
-  className: 'newsletter-wrapper relative flex justify-center mr-5 ml-2',
-})``
+const NewsletterBtnWrapper = styled.div`
+  display: flex;
+  position: relative;
+  margin-left: 0.5rem;
+  margin-right: 1.25rem;
+  justify-content: center;
+`
 
 const NewslettersBtnText = styled.a.attrs({
-  className: 'cursor-pointer font-thin newsletters z-10 fontLight',
+  className: 'fontLight',
 })`
-  /* @font-face {
-    font-family: GeographLight;
-    src: url(../../assets/fonts/geographeditwebregular.ttf) format('truetype');
-  }
-  font-family: GeographLight, Arial, Helvetica, sans-serif; */
-
+  z-index: 10;
+  font-weight: 100;
+  cursor: pointer;
   &:hover + .yellow-bar {
     height: 110%;
   }
 `
 
 const NewslettersBtnYellowBar = styled.div.attrs({
-  className:
-    'absolute w-full bottom-[-2px] h-[3px] bg-[#ffd700] z-5 yellow-bar transition-all duration-150 ease-in-out ',
-})``
+  className: 'yellow-bar',
+})`
+  position: absolute;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  z-index: 5;
+  transition: all 0.15s ease-in-out;
+  background: #ffd700;
+`
 
 export { NewsletterBtnWrapper, NewslettersBtnText, NewslettersBtnYellowBar }

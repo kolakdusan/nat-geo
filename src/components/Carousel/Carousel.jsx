@@ -11,6 +11,7 @@ const TRANSITION_TIME = 500
 const VISIBLE_IMG_COUNT = 7
 const IMG_COUNT = imgData.length
 
+// million-ignore
 const Carousel = () => {
   const [canStartScrolling, setCanStartScrolling] = useState(0)
   const [scrollingDirection, setScrollDirection] = useState(0)

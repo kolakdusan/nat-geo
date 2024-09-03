@@ -34,13 +34,10 @@
   box-sizing: border-box;
 }
 
-.active {
-  transition: all 0.5s ease, padding 0s ease;
-}
-
 html,
 body {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
@@ -272,23 +269,7 @@ img {
   }
 }
 
-$mainColor: #ffd700;
-
-.subscribezz {
-  @apply transition-all duration-300 ease-in-out cursor-pointer;
-
-  &:hover {
-    @apply text-black;
-
-    .lineSubscribe {
-      @apply h-[115%];
-    }
-  }
-}
-
-.lineSubscribe {
-  @apply absolute bottom-[-2px] left-[-1px] w-[95%] h-[2px] bg-[#ffd700] z-[-5] transition-all duration-300 ease-in-out;
-}
+$primary-color: #ffd700;
 
 // #root {
 //   height: 100vh;
@@ -379,4 +360,21 @@ $mainColor: #ffd700;
 
 .swiper-button-disabled {
   visibility: hidden;
+}
+
+.jea {
+  @apply tracking-[3.5px];
+  @for $i from 1 through 5 {
+    span:nth-child(#{$i}) {
+      transition: 0.1s #{'0.' + #{$i - 1} + 's'} all ease;
+    }
+  }
+}
+.jea:hover {
+  @for $i from 1 through 5 {
+    span:nth-child(#{$i}) {
+      font-style: italic;
+      transition: 0.1s #{'0.' + #{$i - 1} + 's'} all ease;
+    }
+  }
 }
