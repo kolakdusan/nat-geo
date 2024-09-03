@@ -1,8 +1,17 @@
-# React + Vite
+# Live demo:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## https://nat-geo-kolak.netlify.app
 
-Currently, two official plugins are available:
+# Nat Geo Site Redesign
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Note:** This project is a work in progress and a playground for trying out new ideas. Feel free to explore and see how things are shaping up. Keep in mind that the code is still evolving, so it's not quite polished yet. The **main focus** is on experimenting with features rather than refining mobile responsiveness at this stage.
+
+## Project Overview
+
+I've been working on redesigning the Nat Geo site to improve the user experience with several enhancements:
+
+- **Carousel Functionality:** Improved the carousel with smoother transitions and added opacity effects for a more dynamic presentation.
+- **Fluid Animations:** Introduced more fluid animations to make interactions feel natural and engaging.
+- **Main focus** 
+
+
